@@ -1,0 +1,10 @@
+output: modpacks
+temp_path: build
+
+modpacks: # TODO: turn into list
+  "OpenSkies":
+    <<: *modpack
+    name: Open Skies
+  'resource_test':
+    <<: *modpack
+    enabled: false

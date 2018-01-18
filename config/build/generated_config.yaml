@@ -1,0 +1,111 @@
+# global defaults
+
+defaults:
+  modpack: &modpack
+    enabled: true
+
+# pack defaults
+enabled: true
+output: modpacks
+packs: packs
+pata_path: data
+temp_path: null
+
+urls: true
+
+mc_version: 1.12.2 # TODO: get latest version from forge data
+forge: recommended
+
+# provider settings
+provider_settings:
+  curse: &curse_settings
+    optional: false
+    release_types:
+     - Release
+     - Beta
+    meta_url: https://cursemeta.nikky.moe
+
+  local: &local_settings
+    folder: local
+
+pack_defaults:
+  direct: &direct
+    type: direct
+    url: null
+    # file_name: null
+    package_type: mod
+    path: mods
+
+  curse: &curse
+    type: curse
+    # file_name_regex: '.*(?<!-deobf\.jar)$'
+    # name: null
+    # id: null
+    # package_type: mod
+    # path: mods
+    
+    # TODO: optional: falspe: mvne # if curse should add optional dependencies
+    # TODO: required: true # if curse not add required dependencies / disable dependency resolition
+
+  github: &github
+    type: github
+    # user: null
+    # repo: null
+    # tag: null
+    package_type: mod
+    path: mods
+
+  maven: &mvn
+    type: mvn
+    # remoteRepository: null
+    # group: null
+    # artifact: null
+    # version: null
+    package_type: mod
+    path: mods
+
+  jenkins: &jenkins
+    type: jenkins
+    # jenkins_url: null
+    # job: null
+    file_name_regex: '.*(?<!-sources\.jar)(?<!-api\.jar)$'
+    package_type: mod
+    path: mods
+
+  local: &local
+    type: local
+    file: null
+    # file_name: null
+    package_type: mod
+    path: mods
+
+  side:
+    client: &client
+      side: client
+
+    server: &server
+      side: server
+
+    both: &both
+      side: server
+
+  feature: &feature
+    # feature_name: name or name of mod that depends on this
+    selected: true
+    # description: null
+    # recommendation: "starred" or "avoid"
+
+# END DEFAULTS
+
+# BEGIN CONFIG
+
+output: modpacks
+temp_path: build
+
+modpacks: # TODO: turn into list
+  "OpenSkies":
+    <<: *modpack
+    name: Open Skies
+  'resource_test':
+    <<: *modpack
+    enabled: false
